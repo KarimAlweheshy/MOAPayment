@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F66DAB8D22140014005DD98F /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66DAB7C2213FEB9005DD98F /* Networking.framework */; };
 		F6C93AEA220DA5AF004A6737 /* PaymentsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C93AE9220DA5AF004A6737 /* PaymentsBuilder.swift */; };
 		F6C93AEE220DA5D3004A6737 /* PaymentModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C93AED220DA5D3004A6737 /* PaymentModule.swift */; };
-		F6C93B62221167D6004A6737 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C93B5A221166FA004A6737 /* Networking.framework */; };
 		F6C93BB32211A37A004A6737 /* PaymentSubmtionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C93BB22211A37A004A6737 /* PaymentSubmtionRequest.swift */; };
 		F6DB6FC1220C8CA30076B6B2 /* Payment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6DB6FB7220C8CA30076B6B2 /* Payment.framework */; };
 		F6DB6FC6220C8CA30076B6B2 /* PaymentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DB6FC5220C8CA30076B6B2 /* PaymentTests.swift */; };
@@ -20,16 +20,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F6C93B59221166FA004A6737 /* PBXContainerItemProxy */ = {
+		F66DAB7B2213FEB9005DD98F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F6C93B54221166FA004A6737 /* Networking.xcodeproj */;
+			containerPortal = F66DAB762213FEB9005DD98F /* Networking.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F6C93AA8220D9506004A6737;
 			remoteInfo = Networking;
 		};
-		F6C93B5B221166FA004A6737 /* PBXContainerItemProxy */ = {
+		F66DAB7D2213FEB9005DD98F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F6C93B54221166FA004A6737 /* Networking.xcodeproj */;
+			containerPortal = F66DAB762213FEB9005DD98F /* Networking.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F6C93AB1220D9506004A6737;
 			remoteInfo = NetworkingTests;
@@ -44,9 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F66DAB762213FEB9005DD98F /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = ../MOANetworking/Networking.xcodeproj; sourceTree = "<group>"; };
 		F6C93AE9220DA5AF004A6737 /* PaymentsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsBuilder.swift; sourceTree = "<group>"; };
 		F6C93AED220DA5D3004A6737 /* PaymentModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModule.swift; sourceTree = "<group>"; };
-		F6C93B54221166FA004A6737 /* Networking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Networking.xcodeproj; path = ../Networking/Networking.xcodeproj; sourceTree = "<group>"; };
 		F6C93B5F22116725004A6737 /* PaymentPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PaymentPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F6C93BB22211A37A004A6737 /* PaymentSubmtionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSubmtionRequest.swift; sourceTree = "<group>"; };
 		F6DB6FB7220C8CA30076B6B2 /* Payment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Payment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6C93B62221167D6004A6737 /* Networking.framework in Frameworks */,
+				F66DAB8D22140014005DD98F /* Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,11 +80,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F6C93B55221166FA004A6737 /* Products */ = {
+		F66DAB772213FEB9005DD98F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F6C93B5A221166FA004A6737 /* Networking.framework */,
-				F6C93B5C221166FA004A6737 /* NetworkingTests.xctest */,
+				F66DAB7C2213FEB9005DD98F /* Networking.framework */,
+				F66DAB7E2213FEB9005DD98F /* NetworkingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,8 +99,8 @@
 		F6DB6FAD220C8CA30076B6B2 = {
 			isa = PBXGroup;
 			children = (
+				F66DAB762213FEB9005DD98F /* Networking.xcodeproj */,
 				F6C93B5F22116725004A6737 /* PaymentPlayground.playground */,
-				F6C93B54221166FA004A6737 /* Networking.xcodeproj */,
 				F6DB6FE0220C8D6C0076B6B2 /* Payment */,
 				F6DB6FC4220C8CA30076B6B2 /* PaymentTests */,
 				F6DB6FB8220C8CA30076B6B2 /* Products */,
@@ -229,8 +229,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F6C93B55221166FA004A6737 /* Products */;
-					ProjectRef = F6C93B54221166FA004A6737 /* Networking.xcodeproj */;
+					ProductGroup = F66DAB772213FEB9005DD98F /* Products */;
+					ProjectRef = F66DAB762213FEB9005DD98F /* Networking.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -242,18 +242,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		F6C93B5A221166FA004A6737 /* Networking.framework */ = {
+		F66DAB7C2213FEB9005DD98F /* Networking.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Networking.framework;
-			remoteRef = F6C93B59221166FA004A6737 /* PBXContainerItemProxy */;
+			remoteRef = F66DAB7B2213FEB9005DD98F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F6C93B5C221166FA004A6737 /* NetworkingTests.xctest */ = {
+		F66DAB7E2213FEB9005DD98F /* NetworkingTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = NetworkingTests.xctest;
-			remoteRef = F6C93B5B221166FA004A6737 /* PBXContainerItemProxy */;
+			remoteRef = F66DAB7D2213FEB9005DD98F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
