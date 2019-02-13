@@ -15,7 +15,9 @@ final class PaymentsBuilder: NSObject {
         let viewController = storyboard.instantiateInitialViewController() as! PaymentsViewController
         let interactor = PaymentsDefaultInteractor(networking: networking, viewController: viewController)
         let presenter = PaymentsDefaultPresenter(resultCallback: resultCallback,
-                                                 interactor: interactor, amount: nil)
+                                                 interactor: interactor,
+                                                 view: viewController,
+                                                 amount: nil)
         viewController.presenter = presenter
         return viewController
     }

@@ -17,14 +17,17 @@ protocol PaymentsPresenter {
 final class PaymentsDefaultPresenter {
     fileprivate let resultCallback: ((Result<PaymentResponse>) -> Void)?
     fileprivate let interactor: PaymentsInteractor
+    fileprivate let view: PaymentsView
     fileprivate var amount: String?
     
     init(resultCallback: ((Result<PaymentResponse>) -> Void)?,
          interactor: PaymentsInteractor,
+         view: PaymentsView,
          amount: String?) {
         
         self.resultCallback = resultCallback
         self.interactor = interactor
+        self.view = view
         self.amount = amount
     }
     
@@ -37,12 +40,17 @@ extension PaymentsDefaultPresenter: PaymentsPresenter {
     }
     
     func pay() {
-        guard let amountString = amount, let amount = Double(amountString) else { return }
+        guard let amountString = amount, let amount = Double(amountString) else {
+            self.view.show(message: "Input a number")
+            return
+        }
         interactor.pay(amount: amount) { (result) in
             switch result {
             case .success:
                 self.resultCallback?(result)
-            case .error: break // Handle error
+                self.view.show(message: "Payed Successfully")
+            case .error(let error):
+                self.view.show(message: error.localizedDescription)
             }
         }
     }

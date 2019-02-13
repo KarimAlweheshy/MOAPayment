@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PaymentsView {
+    func show(message: String)
+}
+
 final class PaymentsViewController: UIViewController {
     
     var presenter: PaymentsPresenter!
@@ -25,5 +29,15 @@ extension PaymentsViewController {
     }
     @IBAction fileprivate func payButtonAction(_ sender: UIButton) {
         presenter.pay()
+    }
+}
+
+// MARK: - PaymentsView
+extension PaymentsViewController: PaymentsView {
+    func show(message: String) {
+        let alertViewController = UIAlertController(title: "Messsage",
+                                                    message: message, preferredStyle: .alert)
+        alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertViewController, animated: true, completion: nil)
     }
 }
