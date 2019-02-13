@@ -9,49 +9,35 @@
 import UIKit
 import Networking
 
-open class PaymentModule: Module {
-    public static var Facade: ModuleFacade.Type = PaymentFacade.self
-    public static var Consumer: ModuleConsumer.Type = PaymentConsumer.self
-}
-
-open class PaymentFacade: ModuleFacade {
-    public static var requestType: [InternalRequest.Type] = [PaymentPayRequest.self]
-}
-
-open class PaymentConsumer: ModuleConsumer {
-    fileprivate let presentationBlock: ((UIViewController, (() -> Void)?) -> Void)?
-    fileprivate let dismissBlock: ((UIViewController, (() -> Void)?) -> Void)?
+open class Module: ModuleType {
+    public static var capabilities: [InternalRequest.Type] = [PaymentPayRequest.self]
     
-    fileprivate weak var paymentsController: PaymentsViewController?
+    fileprivate let presentationBlock: (UIViewController) -> Void
+    fileprivate let dismissBlock: (UIViewController) -> Void
     
-    public required init(presentationBlock: ((UIViewController, (() -> Void)?) -> Void)?, dismissBlock: ((UIViewController, (() -> Void)?) -> Void)?) {
+    public required init(presentationBlock: @escaping (UIViewController) -> Void,
+                         dismissBlock: @escaping (UIViewController) -> Void) {
         self.presentationBlock = presentationBlock
         self.dismissBlock = dismissBlock
     }
     
-    public func execute<T: Codable>(networking: NetworkingType, request: InternalRequest, completionHandler: @escaping (Result<T>) -> Void) {
+    public func execute<T: Codable>(networking: NetworkingType,
+                                    request: InternalRequest,
+                                    completionHandler: @escaping (Result<T>) -> Void) {
+        guard let completionBlock = completionHandler as? ((Result<PaymentResponse>) -> Void) else {
+            completionHandler(.error(ResponseError.badRequest400(error: nil)))
+            return
+        }
+        
         if request is PaymentPayRequest {
-            let paymentsController = PaymentsBuilder.make(networking: networking) { result in
-                func reportResult() {
-                    guard let result = result as? Result<T> else {
-                        completionHandler(.error(ResponseError.other)) //Internal error//
-                        return
-                    }
-                    
-                    completionHandler(result)
-                }
-                
-                if let paymentsController = self.paymentsController {
-                    self.dismissBlock?(paymentsController) { reportResult() }
-                } else {
-                    reportResult()
-                }
-                
+            var paymentsController: PaymentsViewController!
+            paymentsController = PaymentsBuilder.make(networking: networking) { result in
+                self.dismissBlock(paymentsController)
+                completionBlock(result)
             }
-            self.paymentsController = paymentsController
-            presentationBlock?(paymentsController) {}
+            presentationBlock(paymentsController)
         } else {
-            completionHandler(.error(ResponseError.other))
+            completionHandler(.error(ResponseError.badRequest400(error: nil)))
         }
     }
 }
